@@ -127,13 +127,5 @@ if __name__ == "__main__":
     prediction = st.session_state['prediction']
     probability = st.session_state['probability']
 
-    if prediction == None:
-        st.markdown("### Predictions will show here")
-    elif prediction == 'Yes':
-        probability_of_yes = probability[0][1] * 100
-        st.markdown(f"### Employee will leave the company with a probability of {round(probability_of_yes, 2)}%")
-    else:
-        probability_of_yes = probability[0][0] * 100
-        st.markdown(f"### Employee will not leave the company with a probability of {round(probability_of_yes, 2)}%")
 
     st.write(st.session_state)

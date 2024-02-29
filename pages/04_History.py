@@ -1,6 +1,4 @@
 import streamlit as st
-import os
-import pandas as pd
 
 st.set_page_config(
     page_title='History',
