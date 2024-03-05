@@ -45,12 +45,10 @@ def select_model():
 
 if 'prediction' not in st.session_state:
     st.session_state['prediction'] = None
+
 if 'probability' not in st.session_state:
     st.session_state['probability'] = None
 
-
-if not os.path.exists('./data'):
-    os.mkdir("./data")
 
 
 def make_prediction(pipeline, encoder):
@@ -89,7 +87,7 @@ def make_prediction(pipeline, encoder):
     prediction = encoder.inverse_transform([pred])
 
     # Get probabilities
-    probability = pipeline.predict_proba(pred)
+    probability = pipeline.predict_proba(df)
 
     # Updating state
     st.session_state['prediction'] = prediction
@@ -140,7 +138,7 @@ def display_form():
             st.number_input('Num of Companies Worked At', min_value=1,
                             max_value=4, key='numofcompaniesworked')
 
-        st.form_submit_button('Submit', on_click=make_prediction, kwargs=dict(
+        st.form_submit_button('Make Prediction', on_click=make_prediction, kwargs=dict(
             pipeline=pipeline, encoder=encoder))
 
 
@@ -158,5 +156,6 @@ if __name__ == "__main__":
         st.markdown(f"### The employee will leave the company with a probability of {round(probability_of_yes, 2)}%")
     else:
         probability_of_no = probability[0][0] * 100
-        st.markdown(f"### Employee will not leave with a probablity of {round(probability_of_no, 2)}%")
+        st.markdown(f"### Employee will not leave the company with a probability of  {round(probability_of_no, 2)}%")
 
+    # st.write(st.session_state)
