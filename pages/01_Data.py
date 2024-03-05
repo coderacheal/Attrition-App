@@ -11,21 +11,33 @@ st.set_page_config(
 st.title('Proprietory Data from IBM')
 
 
+# @st.cache_resource(show_spinner='Connecting to Database...')
+# def initialize_connection():
+#     connection = pyodbc.connect(
+#        "DRIVER={SQL Server};SERVER="
+#        + st.secrets["SERVER"]
+#        +";DATABASE=" 
+#        + st.secrets["DATABASE"]
+#        +";UID="
+#        + st.secrets["UID"]
+#        +";PWD="
+#        + st.secrets["PWD"]
+#     )
+
+#     return connection
 @st.cache_resource(show_spinner='Connecting to Database...')
 def initialize_connection():
     connection = pyodbc.connect(
-       "DRIVER={SQL Server};SERVER="
-       + st.secrets["SERVER"]
-       +";DATABASE=" 
-       + st.secrets["DATABASE"]
-       +";UID="
-       + st.secrets["UID"]
-       +";PWD="
-       + st.secrets["PWD"]
+       "DRIVER={SQL Server};SERVER=dap-projects-database.database.windows.net;DATABASE=dapDB;UID=LP2_project;PWD=Stat$AndD@t@Rul3"
     )
 
     return connection
 
+
+# SERVER = 'dap-projects-database.database.windows.net'
+# DATABASE = 'dapDB'
+# UID = 'LP2_project'
+# PWD = 'Stat$AndD@t@Rul3'
 
 conn = initialize_connection()
 
