@@ -21,4 +21,4 @@ echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 apt-get install -y unixodbc-dev
 
 # Install kerberos library for Debian distributions
-apt-get install -y libgssapi-krb5-2
+# apt-get install -y libgssapi-krb5-2
