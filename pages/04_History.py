@@ -11,10 +11,8 @@ st.title('Prediciton History')
 
 
 def show_historic_predictions():
-    
     csv_path = "./data/history.csv"
     df = pd.read_csv(csv_path)
-
     return df
 
 
