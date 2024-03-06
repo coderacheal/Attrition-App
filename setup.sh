@@ -1,9 +1,9 @@
 # Download Microsoft GPG key and add it to trusted keys
 curl https://packages.microsoft.com/keys/microsoft.asc | tee /tmp/microsoft.asc
-sudo mv /tmp/microsoft.asc /etc/apt/trusted.gpg.d/microsoft.asc
+mv /tmp/microsoft.asc /etc/apt/trusted.gpg.d/microsoft.asc
 
 # Add Microsoft repository to package sources
-echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/debian/12/prod bookworm main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
+echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/debian/12/prod bookworm main" | tee /etc/apt/sources.list.d/mssql-release.list
 
 # Update package lists
 apt-get update
