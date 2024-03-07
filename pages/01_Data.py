@@ -11,33 +11,29 @@ st.set_page_config(
 st.title('Proprietory Data from IBM')
 
 
-# @st.cache_resource(show_spinner='Connecting to Database...')
-# def initialize_connection():
-#     connection = pyodbc.connect(
-#        "DRIVER={SQL Server};SERVER="
-#        + st.secrets["SERVER"]
-#        +";DATABASE=" 
-#        + st.secrets["DATABASE"]
-#        +";UID="
-#        + st.secrets["UID"]
-#        +";PWD="
-#        + st.secrets["PWD"]
-#     )
-
-#     return connection
 @st.cache_resource(show_spinner='Connecting to Database...')
 def initialize_connection():
     connection = pyodbc.connect(
-       "DRIVER={SQL Server};SERVER=dap-projects-database.database.windows.net;DATABASE=dapDB;UID=LP2_project;PWD=Stat$AndD@t@Rul3"
+       "DRIVER={SQL Server};SERVER="
+       + st.secrets["SERVER"]
+       +";DATABASE=" 
+       + st.secrets["DATABASE"]
+       +";UID="
+       + st.secrets["UID"]
+       +";PWD="
+       + st.secrets["PWD"]
     )
 
     return connection
 
 
-# SERVER = 'dap-projects-database.database.windows.net'
-# DATABASE = 'dapDB'
-# UID = 'LP2_project'
-# PWD = 'Stat$AndD@t@Rul3'
+# @st.cache_resource(show_spinner='Connecting to Database...')
+# def initialize_connection():
+#     connection = pyodbc.connect(
+#        "DRIVER={SQL Server};SERVER=dap-projects-database.database.windows.net;DATABASE=dapDB;UID=LP2_project;PWD=Stat$AndD@t@Rul3"
+#     )
+
+#     return connection
 
 conn = initialize_connection()
 
@@ -59,10 +55,6 @@ def select_all_features():
     df = query_database(query)
     return df
 
-# def select_numeric_feature():
-#     query = "Select * from LP2_Telco_churn_first_3000"
-#     df = query_database(query)
-#     return df
 
 if __name__ == "__main__":
    
